@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta charset="UTF-8">
+  <title>RetroMovies</title>
+  <link rel="icon" type="image/png" href="assets/img/logotipo.png" sizes="16x16"/>
+  <link rel="icon" type="image/png" href="assets/img/logotipo.png" sizes="32x32"/>
+  <link href="https://fonts.googleapis.com/css?family=Kite+One|Oleo+Script" rel="stylesheet">
+  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-database.js"></script>
+  <script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBdVN9DkdgZOtlpnymlClTD8sC7I5WIHPI",
+    authDomain: "retromovies-abd06.firebaseapp.com",
+    databaseURL: "https://retromovies-abd06.firebaseio.com",
+    projectId: "retromovies-abd06",
+    storageBucket: "retromovies-abd06.appspot.com",
+    messagingSenderId: "431147430642"
+  };
+    firebase.initializeApp(config);
+  </script>
+  <link rel="stylesheet" href="assets/fonts/icomoon/style.css">
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+  <div class="container-fluid first" style="padding-right: 0; padding-left: 0;">
+    <!-- inicio navbar -->
+    <nav class="navbar navbar-default navbar-static-top" id="up">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <span><a class="navbar-brand hidden-sm hidden-md hidden-lg col-xs-3" href="#"><img src="assets/img/logo_movil1.png" alt="LogoMovil" class="logoMovil"></a></span>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="menu">
+          <ul class="nav navbar-nav links">
+            <li><a href="#">Películas</a></li>
+            <li><a id="link-episode" href="#">Episodios</a></li>
+            <li><a id="link-top-movies" href="#">Destacados</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-left hidden-xs hidden-sm">
+            <li class="navbar-logo"><img src="assets/img/logotipo.png" alt="RetroMovies" class="logotipo"></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right" id="menu-user">
+            <li class=""><a href="#" class="search"><span class="icon-search"></span> Buscar</a></li>
+
+            <!-- <li><a href="#"><span class="icon-user"></span> Cuenta</a></li> -->
+            <li><button type="button" data-toggle="modal" data-target="#modalLogin" class="btn btn-link navbar-btn">Iniciar Sesión</button></li>
+            <li><button type="button" data-toggle="modal" data-target="#modalRegister" class="btn btn-link navbar-btn">Regístrate</button></li>
+            <button type="button" class="btn btn-link navbar-btn hide">Cerrar Sesión</button>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+      <div class="bootsnipp-search">
+
+      </div>
+      <!--seccion curva-->
+      <div class="tummy">
+
+      </div>
+    </nav>
+  <!-- fin navbar -->
+  </div>
+  <!--fin container first-->
+  <!--boton ir arriba-->
+
+  <span class="icon-eject ir-arriba"></span>
+  <!--inicio container second-->
+  <div id="global-content">
+    <div class="container-fluid second">
+      <div class="container welcome">
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <h1>Retro Movies</h1>
+            <p>Bienvenidos a Retro movies.
+              Este es un sitio para cinéfilos por cinéfilos, aficionados a los clásicos del cine. Elige tu película y cine favorito. Te invitamos a ser parte de nuestro sitio!</p>
+          </div>
+        </div>
+        <div class="row welcome2">
+          <div class="col-xs-12 col-md-4">
+              <img src="assets/img/camara.png" alt="vector-camara">
+              <h2>Descubre</h2>
+              <div class="hidden-xs">
+                  <p>Aquí podrás encontrar tus películas favoritas y descubrir las que aun te quedan por ver.</p>
+              </div>
+          </div>
+          <div class="col-xs-12 col-md-4">
+              <img src="assets/img/boletos.png" alt="vector-boletos">
+              <h2>Listas</h2>
+              <div class="hidden-xs">
+                  <p>Puedes guardar tus películas favoritas y crear una lista de las que te gustaría ver.</p>
+              </div>
+          </div>
+          <div class="col-xs-12 col-md-4">
+              <img src="assets/img/cine.png" alt="vector-cine">
+              <h2>Estrenos</h2>
+              <div class="hidden-xs">
+                  <p>Disfruta del mejor cine y no olvides mantenerte al día con los estrenos. Disfruta de lo nuevo!</p>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--seccion curva-->
+    <div class="tummy1">
+
+    </div>
+    <!--fin container second-->
+    <!--inicio container third-->
+    <div class="container-fluid third">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <h1 id="top-movies">Películas Destacadas</h1>
+        </div>
+        <!-- Carousel -->
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="jcarousel-wrapper">
+            <div class="jcarousel">
+              <ul>
+                <!--<li><img src="https://images-na.ssl-images-amazon.com/images/M/MV5BY2Q2NzQ3ZDUtNWU5OC00Yjc0LThlYmEtNWM3NTFmM2JiY2VhXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg" alt="Image 1"></li>
+                <li><img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjZiNzIxNTQtNDc5Zi00YWY1LThkMTctMDgzYjY4YjI1YmQyL2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg" alt="Image 2"></li>
+                <li><img src="https://images-na.ssl-images-amazon.com/images/M/MV5BY2Q2NzQ3ZDUtNWU5OC00Yjc0LThlYmEtNWM3NTFmM2JiY2VhXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg" alt="Image 3"></li>
+                <li><img src="https://images-na.ssl-images-amazon.com/images/M/MV5BY2Q2NzQ3ZDUtNWU5OC00Yjc0LThlYmEtNWM3NTFmM2JiY2VhXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg" alt="Image 3"></li>-->
+              </ul>
+            </div>
+            <a href="#" class="jcarousel-control-prev">&lsaquo;</a>
+            <a href="#" class="jcarousel-control-next">&rsaquo;</a>
+            <p class="jcarousel-pagination"></p>
+          </div>
+        </div>
+      <!-- Fin Carousel -->
+      </div>
+    </div>
+    <!--seccion curva-->
+    <div class="tummy">
+
+    </div>
+    <!--fin container third-->
+    <!--inicio container fourth-->
+    <div class="container-fluid fourth">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <h1 id="episode">Lista de películas</h1>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="results">
+          <h3 style="font-family: 'Oleo Script', cursive;">Resultados</h3>
+          <div class="row search-results">
+            <div class="col-xs-12 col-md-6">
+              <div class="row">
+                <div class="col-xs-4 col-md-2">
+                  <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BY2Q2NzQ3ZDUtNWU5OC00Yjc0LThlYmEtNWM3NTFmM2JiY2VhXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg" alt="Image 1" class="img-thumbnail">
+                </div>
+                <div class="col-xs-8 col-md-10">
+                  <ul>
+                    <li>Titulo</li>
+                    <li>Año:</li>
+                    <li>Genero:</li>
+                  </ul>
+                </div>
+              </div>
+              
+            </div>
+            
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--seccion curva-->
+    <div class="tummy1"></div>
+    <!--fin container fourth-->
+    </div>
+    <!--inicio footer-->
+    <div class="container-fluid fifth">
+      <div class="row">
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+          <span>Copyright © 2018</span>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+          <span class="socialMedia icon-google"></span>
+          <span class="socialMedia icon-facebook"></span>
+          <span class="socialMedia icon-twitter"></span>
+
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+          <span>Diseñado por <u class="retro">RetroMovies</u></span>
+        </div>
+      </div>
+    </div>    
+  </div>
+    
+
+  <!--fin footer-->
+
+  <!-- inicio login -->
+  <div class="contlog"></div>
+  <!-- fin login -->
+
+
+
+ <!-- SECCION MODALES -->
+  <!-- Modal log -->
+    <div class="modal fade" id="modalLogin" role="dialog">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content login-color modal-bg" style="top:50px;">
+        <div class="modal-header">
+          <img src="assets/img/ticket.png" class="user">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h2 class="logtitle contlog">Iniciar Sesión</h2>
+        </div>
+        <div class="modal-body modal-bg">
+          <section id="lab_video_slider" class="signup-form-link">
+            <video autoplay muted loop id="myVideo">
+              <source src="assets/img/ipad.mp4" type="video/mp4">
+            </video>
+          </section>
+          <div class="content">
+            <form class="form-horizontal row">
+
+            <div class="form-group">
+              <label class="control-label col-xs-2 col-md-1 col-md-offset-1"><i class="fa fa-user fa-lg" aria-hidden="true"></i></label>
+              <div class="col-xs-8 col-md-8">
+                <input type="email" class="form-control input-box" id="email_login" placeholder="Correo Electrónico">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-xs-2 col-sm-2 col-md-1 col-md-offset-1"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></label>
+              <div class="col-xs-8 col-md-8">
+                <input type="password" class="form-control input-box" id="pwd_login" placeholder="Ingresa tu contraseña">
+              </div>
+            </div>
+              <div class="form-group">
+                <div class="text-center col-xs-6 col-xs-offset-3 col-sm-offset-5 col-sm-3 col-md-offset-5 col-md-3 col-lg-offset-5 col-lg-3 button">
+                  <button type="button" class=" btn btn-default bold text-uppercase default-color" id="submit_login" data-dismiss="modal">Iniciar Sesión</button>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-xs-offset-2 col-xs-10 col-md-offset-3 col-md-9 pmove">
+                  <p class="loginp">Olvidaste tu contraseña? <a href="#" id="forgetpwd" data-dismiss="modal">Click Aquí</a></p>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Fin Modal Registrarse-->
+ <!-- Modal Iniciar Sesión -->
+  <div class="modal fade" id="modalRegister" role="dialog">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content login-color modal-bg" style="top:50px;">
+        <div class="modal-header">
+          <img src="assets/img/ticket.png" class="user">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h2 class="logtitle contlog">Registrarse</h2>
+        </div>
+        <div class="modal-body modal-bg">
+          <section id="lab_video_slider" class="signup-form-link">
+            <video autoplay muted loop id="myVideo">
+              <source src="assets/img/ipad.mp4" type="video/mp4">
+            </video>
+          </section>
+          <div class="content">
+            <form class="form-horizontal row">
+
+            <div class="form-group">
+              <label class="control-label col-xs-2 col-md-1 col-md-offset-1"><i class="fa fa-user fa-lg" aria-hidden="true"></i></label>
+              <div class="col-xs-8 col-md-8">
+                <input type="email" class="form-control input-box" id="email" placeholder="Correo Electrónico: ejemplo@correo.com">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-xs-2 col-sm-2 col-md-1 col-md-offset-1"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></label>
+              <div class="col-xs-8 col-md-8">
+                <input type="password" class="form-control input-box" id="password" placeholder="Contraseña (Minimo 6 caracteres)">
+              </div>
+            </div>
+              <div class="form-group">
+                <div class="col-xs-6 col-xs-offset-4 col-sm-offset-5 col-sm-3 col-md-offset-5 col-md-3 col-lg-offset-4 col-lg-3 button">
+                  <button type="button" class=" btn btn-default bold text-uppercase default-color" id="submit_register" data-dismiss="modal">Enviar</button>
+                </div>
+              </div>
+              <div class="form-group">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<div>
+
+  <!-- Fin Modal Registrarse-->
+ <!-- Modal Iniciar Sesión -->
+
+  <!-- Fin Modal Iniciar Sesión -->
+  <div class="modal-search-results">
+  </div>
+
+<!-- scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="assets/js/jquery.jcarousel.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-auth.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
